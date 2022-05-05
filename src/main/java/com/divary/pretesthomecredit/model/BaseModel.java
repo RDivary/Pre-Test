@@ -27,4 +27,12 @@ public class BaseModel {
     public void setUpdateDate(LocalDateTime updateDate) {
         this.updateDate = updateDate;
     }
+
+    @Override
+    public String toString() {
+        return "BaseModel{" +
+                "createDate=" + createDate +
+                ", updateDate=" + updateDate +
+                '}';
+    }
 }

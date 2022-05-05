@@ -77,6 +77,8 @@ public class User extends BaseModel {
                 ", balance=" + balance +
                 ", accountNumber='" + accountNumber + '\'' +
                 ", logTransfers=" + logTransfers +
+                ", created=" + super.getCreateDate() + '\'' +
+                ", update=" + super.getUpdateDate() + '\'' +
                 '}';
     }
 

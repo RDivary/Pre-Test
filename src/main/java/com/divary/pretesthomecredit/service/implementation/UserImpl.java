@@ -24,22 +24,33 @@ import java.util.Random;
 @Service
 public class UserImpl implements UserService {
 
-    @Autowired
+//    @Autowired
     UserRepository userRepository;
 
-    @Autowired
+//    @Autowired
     LogTransferService logTransferService;
 
+//    @Autowired
+    Random random;
+
+//    @Autowired
+//    LocalDateTime localDateTime;
+
     @Autowired
-    LogTransferRepository logTransferRepository;
+    public UserImpl(UserRepository userRepository, LogTransferService logTransferService, Random random) {
+        this.userRepository = userRepository;
+        this.logTransferService = logTransferService;
+        this.random = random;
+//        this.localDateTime = localDateTime;
+    }
 
     @Override
     public User save(User user) {
 
         LocalDateTime now = LocalDateTime.now();
 
-        if (user.getCreateDate() == null) user.setCreateDate(now);
-        user.setUpdateDate(now);
+//        if (user.getCreateDate() == null) user.setCreateDate(now);
+//        user.setUpdateDate(now);
 
         return userRepository.save(user);
     }
@@ -54,7 +65,6 @@ public class UserImpl implements UserService {
 
             do {
                 StringBuilder accountNumber = new StringBuilder();
-                Random random = new Random();
 
                 for(int i = 1; i < 8; i++){
                     accountNumber.append(random.nextInt(10));
@@ -71,8 +81,11 @@ public class UserImpl implements UserService {
         user.setUsername(form.getUsername());
         user.setBalance(form.getBalance());
 
-        save(user);
-
+        System.err.println(user);
+//        save(user);
+        userRepository.save(user);
+        System.err.println(user);
+        System.err.println("===============================");
         return user;
     }
 
@@ -95,9 +108,9 @@ public class UserImpl implements UserService {
 
         user.getLogTransfers().add(logTransferSent);
 
-        save(user);
+//        save(user);
 
-        return user;
+        return save(user);
 
     }
 

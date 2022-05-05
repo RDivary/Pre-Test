@@ -51,7 +51,7 @@ public class UserController extends BaseController {
     }
 
     @PostMapping("/add-balance")
-    @ApiOperation("Transfer")
+    @ApiOperation("Add Balance")
     public ResponseEntity<BaseResponse<?>> transfer(
             @RequestHeader(name = "id") String id,
             @RequestBody AddBalanceRequest form
